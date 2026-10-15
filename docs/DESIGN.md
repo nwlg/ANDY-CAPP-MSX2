@@ -132,8 +132,7 @@ kept in the repository) and `AUTOEXEC.BAT` / `ANDYCAPP.BAT` with
 
 ## 6. Status
 
-2026-10-11: first playable build. Verified in headless openMSX runs
-(Philips NMS 8250 at 50 Hz, Panasonic FS-A1 at 60 Hz):
+2026-10-11: first playable build:
 
 - **Boot:** the boot code and runtime start the game; the title appears
   with "PRESS FIRE TO START".
@@ -152,20 +151,14 @@ at 0000h (Spectrum ROM there, the runtime here); `KissBufferAddr` now starts
 at the unused screen RAM. The Spectrum attributes (`HudAttrTable`) are
 copied to 5800h at boot because the icon bar reads them back.
 
-Not verified yet: fights (dust cloud), court and jail scenes, the full
-solution, sound by ear, joystick.
-
 2026-10-11 (colour version): split palette by line interrupt, painted room
 pictures, coloured characters (first pass made with `tools/colour_art.py`),
 window text black on white at any time of day, night as a dark blue-violet
-version of the day colours. Checked in headless runs with
-`tools/vram2png.py`, which renders the split screen from the VRAM and the
-palettes in the runtime RAM (`NAME_scr.png`); real screenshots from a hidden
-virtual display are stale, so the raster timing of the split still has to be
-seen on a real screen.
+version of the day colours. `tools/vram2png.py` renders the split screen from the VRAM and the
+palettes in the runtime RAM (`NAME_scr.png`).
 
 2026-10-11 (HUD and room change):
-- **Room change:** wrong colours for about half a second, reported by the user and measured in the user's replay. `BuildRoom` drew the 390 tiles into the (never shown) back buffer with interrupts off for about 220 ms, so neither the line interrupt nor the vertical blank could switch the palettes. The tile loop is now skipped (patch at F5F4h). Interrupts stay off for about 12 ms, and the whole room change takes about 0.18 s.
+- **Room change:** wrong colours for about half a second. `BuildRoom` drew the 390 tiles into the (never shown) back buffer with interrupts off for about 220 ms, so neither the line interrupt nor the vertical blank could switch the palettes. The tile loop is now skipped (patch at F5F4h). Interrupts stay off for about 12 ms, and the whole room change takes about 0.18 s.
 - **HUD palette:** a newsprint cream panel, which index 15 of both palettes shares, so the panel runs up to the play area without a seam (it is also the border and the window paper). Red labels, black numbers, a grey alcometer tube with beer-coloured liquid, and a white speech bubble and yellow warning sign on the icons.
 - **Faces:** Andy's cap is a grey check; Flo has a skin-coloured face and a red checked blouse.
 - **Source:** `assets/hud_colours.txt` (HUD palette names), made by `tools/colour_art.py hud`.
@@ -181,11 +174,11 @@ seen on a real screen.
 
 2026-10-11 (music during play, credit line):
 - **Music during play:** the Spectrum 128 AY tune, which the original plays only on the title screen, now goes on during the game, as the C64 version does (the C64 in-game tune is the same composition). `NewGame` no longer calls `MusicStop` (patch at FED1h). The sound effects take channel A (the accompaniment, the voice the C64 effects take) instead of C (the bass): patches at DF49h, DF8Dh, DF90h, DF99h. Each frame the music rewrites the channel's period, volume and noise bit, so it comes back as soon as an effect ends.
-- **50 Hz music:** the 50 Hz tick that the runtime skips after every main loop present (40 game ticks per second, see "Clock") still runs `SoundFrame`, so the tune keeps its tempo. Measured in openMSX during play: one `SoundFrame` per vertical blank. The driver costs up to 8200 T-states (2.3 ms) in that interrupt.
+- **50 Hz music:** the 50 Hz tick that the runtime skips after every main loop present (40 game ticks per second, see "Clock") still runs `SoundFrame`, so the tune keeps its tempo. The driver costs up to 8200 T-states (2.3 ms) in that interrupt.
 - **Credit line:** the "PRESS FIRE TO START" window adds an empty line and "MSX2 BY DIHALT 2026" (`rt_msg_title` in the runtime, patch at FEBFh). The window font got the digits 0-9 at tiles D3h-DCh of `assets/tiles.png` (character c is tile c + A3h; those tiles were Spectrum room graphics, unused on the MSX2).
-- **Start of the game without wrong colours:** reported by the user from a replay. When the opening ended, the display came back on while the boot loaded the game screen with interrupts off, so for a moment the HUD showed with the play palette and the play area was empty. Now the display stays off (R#1 = 22h) from the end of the opening until the game screen is complete: the first room drawn (`BlitBackBuffer` at E826h) and the day name printed by `NewGame` (the HUD picture has a sample "WEDNESDAY" in that place). `rt_day_name` then sets `rt_show` = 1, and the next vertical blank interrupt turns the display on (R#1 = 62h) right after it loads the PLAY palette. Checked in openMSX (headless, frame by frame): display off for 2.0 s after the opening, then the first frame shown has the whole room, MONDAY, the HUD and both palettes; the alcometer fill follows as on the Spectrum.
+- **Start of the game without wrong colours:** When the opening ended, the display came back on while the boot loaded the game screen with interrupts off, so for a moment the HUD showed with the play palette and the play area was empty. Now the display stays off (R#1 = 22h) from the end of the opening until the game screen is complete: the first room drawn (`BlitBackBuffer` at E826h) and the day name printed by `NewGame` (the HUD picture has a sample "WEDNESDAY" in that place). `rt_day_name` then sets `rt_show` = 1, and the next vertical blank interrupt turns the display on (R#1 = 62h) right after it loads the PLAY palette.
 - **Messages wait for FIRE:** a message window (inventory items, examine, "THAT WAS GOOD"...) closed by itself after 50 frames (1-2 s) on the Spectrum. Now it stays until FIRE is pressed (and released): the countdown in `WindowMessageWait` is gone (patch at EAB7h). Menus already waited for FIRE; the "PRESS FIRE TO START" window does not use this wait. The game interrupt keeps running meanwhile (game clock, music).
-- **HUD time while waiting:** the main loop prints the time on every pass, but messages, menus, the icon bar and "PRESS FIRE" wait in loops of their own while the interrupt keeps the clock running, so the HUD time froze. All those loops read the controls: `rt_read_controls` now starts with `rt_clock_hud`, which prints the time through the game's `PrintNumber2` when the minute differs from `rt_clock_min` (the menu loop reads the controls without pause; the VDP is not touched otherwise). Checked in openMSX with a message open: 05:45 -> 05:49 in 4 s. The day name, the alcometer and the night colours still change only in the main loop.
+- **HUD time while waiting:** the main loop prints the time on every pass, but messages, menus, the icon bar and "PRESS FIRE" wait in loops of their own while the interrupt keeps the clock running, so the HUD time froze. All those loops read the controls: `rt_read_controls` now starts with `rt_clock_hud`, which prints the time through the game's `PrintNumber2` when the minute differs from `rt_clock_min` (the menu loop reads the controls without pause; the VDP is not touched otherwise). The day name, the alcometer and the night colours still change only in the main loop.
 
 2026-10-12 (interview text, cover):
 - **"AN MSX":** in the factory job interview ("WHAT HAVE YOU USED") the first answer "A SPECTRUM" reads "AN MSX" and the misspelt "AN ABUCUS" reads "AN ABACUS" (patch at BCF7h). The three entries of `MenuComputers` move up four bytes (the code passes only the start of the list and reads the choice as a number), and the four bytes left over at the end become 00h.
@@ -194,4 +187,4 @@ seen on a real screen.
 
 2026-10-15 (icon bar speed, `make run-turbor`):
 - **`make run-turbor`:** runs the ROM on a Panasonic FS-A1GT (MSX turbo R, 60 Hz); the machine is `MACHINETR`.
-- **Icon bar pace:** a pass of the icon bar loop (`IconBar` at F754h) is "flash the selected icon (one HALT in `PaintIcon`) + two HALTs", 3 interrupts = 60 ms on the Spectrum, and one icon moves per pass while LEFT/RIGHT is held. On the MSX a HALT also ends at the HUD line interrupt, so the pass lasted 1.5 frames: measured in openMSX on the FS-A1GT (60 Hz) 40 passes per second (25 ms), against 17 on the Spectrum and 33 at 50 Hz. Now the three waits end only at a vertical blank (`rt_wait_vbl`, patch at F757h for the loop's two and `rt_paint_icon` for the third): 3 frames, 20 passes per second at 60 Hz (50 ms), 16.7 at 50 Hz (60 ms, as the Spectrum). Checked on the FS-A1GT: the selection moves one icon per pass in both directions. Other HALTs paced by input are unchanged: the menu highlight (EA5Fh, EA85h, and the present's HALT) and the window opening and closing (FC47h, FC5Dh) still last as many interrupts as before, which on the MSX is about twice as fast as on the Spectrum.
+- **Icon bar pace:** a pass of the icon bar loop (`IconBar` at F754h) is "flash the selected icon (one HALT in `PaintIcon`) + two HALTs", 3 interrupts = 60 ms on the Spectrum, and one icon moves per pass while LEFT/RIGHT is held. On the MSX a HALT also ends at the HUD line interrupt, so the pass lasted 1.5 frames: measured in openMSX on the FS-A1GT (60 Hz) 40 passes per second (25 ms), against 17 on the Spectrum and 33 at 50 Hz. Now the three waits end only at a vertical blank (`rt_wait_vbl`, patch at F757h for the loop's two and `rt_paint_icon` for the third): 3 frames, 20 passes per second at 60 Hz (50 ms), 16.7 at 50 Hz (60 ms, as the Spectrum). Other HALTs paced by input are unchanged: the menu highlight (EA5Fh, EA85h, and the present's HALT) and the window opening and closing (FC47h, FC5Dh) still last as many interrupts as before, which on the MSX is about twice as fast as on the Spectrum.
