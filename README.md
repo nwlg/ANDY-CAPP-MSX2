@@ -13,7 +13,7 @@ manuals. It is a 512 KB ASCII16 MegaROM for an MSX2 (or MSX2+, or turbo R) with 
 cartridge slot or on a flash cartridge. It works at 50 and at 60 Hz, at the same speed on both.
 
 * **Real MSX:** a MegaROM flash cartridge with the ASCII16 mapper (for a MegaFlashROM SCC+ SD, see the
-  [SD card](#megaflashrom-scc-sd) section). Not tested on a real machine yet.
+  [SD card](#megaflashrom-scc-sd) section).
 * **openMSX:** load it with the mapper forced, because the automatic detection gets this ROM wrong:
 
 ```sh

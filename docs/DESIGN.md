@@ -153,7 +153,7 @@ at the unused screen RAM. The Spectrum attributes (`HudAttrTable`) are
 copied to 5800h at boot because the icon bar reads them back.
 
 Not verified yet: fights (dust cloud), court and jail scenes, the full
-solution, sound by ear, joystick, real hardware.
+solution, sound by ear, joystick.
 
 2026-10-11 (colour version): split palette by line interrupt, painted room
 pictures, coloured characters (first pass made with `tools/colour_art.py`),

@@ -76,7 +76,7 @@ with environment variables:
 
 Copy the contents of `dist/` to the root of the card. The computer starts MSX-DOS, `AUTOEXEC.BAT` writes the game to the
 cartridge and starts it. From then on the cartridge starts Andy Capp every time it is switched on; hold ESC while
-switching on to boot the card instead; `OPFXSD /C` erases the game. This procedure has not been tested on real hardware.
+switching on to boot the card instead; `OPFXSD /C` erases the game.
 
 ## What happens during a build
 
