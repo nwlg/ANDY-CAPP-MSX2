@@ -1,0 +1,20 @@
+GIMP Palette
+Name: Andy Capp MSX2 status panel
+Columns: 8
+# 16 colours of the MSX2 (3 bits per component: 0, 36, 73, 109, 146, 182, 219, 255)
+  0   0   0	transparent
+  0   0   0	black
+255 255 218	paper
+  0   0 218	blue
+255  72  72	red
+218   0 218	magenta
+  0 218   0	green
+255 182  36	beer
+255 255   0	yellow
+  0   0 218	icon wallet
+  0 218   0	icon speak
+218   0   0	icon fight
+218   0 218	icon action
+255 182 145	skin
+145 145 145	grey
+255 255 218	white (fixed)

@@ -1,0 +1,19 @@
+# Build outputs (make), the SD card folder and the release files (attached to the GitHub release, not tracked)
+build/
+dist/
+release/*.rom
+release/*.zip
+release/*.pdf
+third_party/
+__pycache__/
+*.py[cod]
+*.log
+*.tmp
+*.bak
+*~
+
+# LaTeX temporaries (the manual PDFs are kept)
+docs/manual/*.aux
+docs/manual/*.log
+docs/manual/*.out
+docs/manual/*.toc

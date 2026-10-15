@@ -1,0 +1,3 @@
+# Pictures painted by hand: tools/colour_art.py never replaces them (one per line,
+# e.g. rooms/room_21.png, sprites_top.png, screen.png)
+tiles.png

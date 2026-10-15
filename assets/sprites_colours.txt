@@ -1,0 +1,175 @@
+# Colours of the character parts (tools/colour_art.py). top_N: 32x32 upper
+# halves, bot_N: 32x24 lower halves, numbered as in assets/sprite_parts.txt.
+# Parts are stored facing left; the mirrored copies are made by the build.
+
+macro andy_head                 # face, grey flat cap
+  face 4 21 10 skin
+  rest 0 0 31 12 lightgrey
+end
+macro andy_legs                 # brown shoes
+  rest 0 15 31 23 wood
+end
+macro flo_top                   # curlers, red checked blouse
+  face 4 21 12 skin
+  rest 0 18 31 31 red
+end
+macro flo_back
+  rest 0 18 31 31 red
+end
+macro flo_legs                  # white apron, legs
+  rest 0 9 31 21 skin
+end
+macro woman_top                 # green checked dress
+  face 4 21 12 skin
+  rest 0 18 31 31 green
+end
+macro woman_legs
+  rest 0 0 31 9 green
+  rest 0 10 31 21 skin
+end
+macro rent_top                  # grey hat, cream raincoat
+  face 4 21 12 skin
+  rest 0 0 31 7 grey
+  rest 0 8 31 31 cream
+end
+macro rent_back
+  rest 0 0 31 7 grey
+  rest 0 8 31 31 cream
+end
+macro rent_legs                 # end of the coat, checked trousers
+  rest 0 0 31 6 cream
+  rest 0 7 31 23 lightgrey
+end
+macro police_top                # navy helmet and tunic
+  face 4 21 12 skin
+  ink 0 0 31 9 navy
+  ink 0 21 31 31 navy
+end
+macro police_back
+  ink 0 0 31 31 navy
+end
+macro police_legs
+  ink 0 0 31 19 navy
+end
+
+top_0
+  use andy_head
+top_1
+  use andy_head
+top_2
+  use andy_head
+top_3
+  rest 0 0 31 14 lightgrey
+top_4
+  use flo_top
+top_5
+  use flo_top
+top_6
+  use flo_top
+top_7
+  use flo_back
+top_8
+  use woman_top
+top_9
+  use woman_top
+top_10
+  use woman_top
+top_11
+  rest 0 18 31 31 green
+top_12
+  use rent_top
+top_13
+  use rent_top
+top_14
+  use rent_top
+top_15
+  use rent_back
+top_16
+  use police_top
+top_17
+  use police_top
+top_18
+  use police_top
+top_19
+  use police_back
+
+bot_0
+  use andy_legs
+bot_1
+  use andy_legs
+bot_2
+  use andy_legs
+bot_3
+  use andy_legs
+bot_4
+  use andy_legs
+bot_5
+  use andy_legs
+bot_6
+  use andy_legs
+bot_7
+  use andy_legs
+bot_8
+  use flo_legs
+bot_9
+  use flo_legs
+bot_10
+  use flo_legs
+bot_11
+  use flo_legs
+bot_12
+  use flo_legs
+bot_13
+  use flo_legs
+bot_14
+  use flo_legs
+bot_15
+  use flo_legs
+bot_16
+  use woman_legs
+bot_17
+  use woman_legs
+bot_18
+  use woman_legs
+bot_19
+  use woman_legs
+bot_20
+  use woman_legs
+bot_21
+  use woman_legs
+bot_22
+  use woman_legs
+bot_23
+  use woman_legs
+bot_24
+  use rent_legs
+bot_25
+  use rent_legs
+bot_26
+  use rent_legs
+bot_27
+  use rent_legs
+bot_28
+  use rent_legs
+bot_29
+  use rent_legs
+bot_30
+  use rent_legs
+bot_31
+  use rent_legs
+bot_32
+  use police_legs
+bot_33
+  use police_legs
+bot_34
+  use police_legs
+bot_35
+  use police_legs
+bot_36
+  use police_legs
+bot_37
+  use police_legs
+bot_38
+  use police_legs
+bot_39
+  use police_legs

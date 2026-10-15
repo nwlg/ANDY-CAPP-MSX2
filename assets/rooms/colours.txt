@@ -1,0 +1,342 @@
+# Colours of the room backgrounds (tools/colour_art.py). Coordinates are
+# pixels of the 240x104 play area; the floor line is y = 95.
+
+macro label                     # the "ANDY CAPP" plate: yellow letters
+  rect 0 1 71 7 yellow
+end
+macro pavement
+  rect 0 96 239 102 grey
+end
+macro floor
+  rect 0 96 239 102 wood
+end
+macro bricks                    # what is still white on a brick wall: loose bricks
+  rest 72 1 239 7 brick
+  rest 0 1 239 94 wood
+end
+
+# ---- streets -------------------------------------------------------------
+room_00                         # corner, the left face is in the shade
+  use label
+  use pavement
+  fill 40 50 darkbrown
+  fill 150 50 brick
+  rest 0 8 79 94 brick
+  rest 81 8 239 94 wood
+room_01                         # Justice and Peace
+  use label
+  use pavement
+  fill 40 60 cream
+  fill 200 60 cream
+  fill 125 60 darkbrown
+  rest 0 1 239 94 lightgrey
+room_02
+  use label
+  use pavement
+  fill 120 30 brick
+  use bricks
+room_03                         # corner, the right face is in the shade
+  use label
+  use pavement
+  fill 60 30 brick
+  fill 200 30 darkbrown
+  rest 0 8 159 94 wood
+  rest 161 8 239 94 brick
+room_05                         # police station
+  use label
+  use pavement
+  fill 200 40 brick
+  fill 230 85 brick
+  fill 40 85 brick
+  fill 130 60 darkbrown          # door opening
+  rect 5 18 70 52 navy          # behind the bars
+  rest 100 8 160 22 lightblue   # POLICE sign
+  use bricks
+room_08                         # No. 38
+  use label
+  use pavement
+  fill 60 40 brick
+  fill 120 70 green             # door
+  fill 120 20 lightblue         # fanlight
+  rest 210 8 239 60 lightblue   # window
+  use bricks
+room_09                         # No. 37, Andy's door
+  use label
+  use pavement
+  fill 150 40 brick
+  fill 105 70 red               # door
+  fill 105 20 lightblue         # fanlight
+  rest 0 8 20 60 lightblue      # window
+  use bricks
+room_10                         # lamp post
+  use label
+  use pavement
+  fill 100 40 brick
+  rect 214 0 239 18 yellow      # lamp
+  use bricks
+room_13                         # wall and fence
+  use label
+  use pavement
+  fill 60 40 brick
+  rest 0 1 117 94 wood
+  fill 120 1 lightblue          # sky over the fence
+  rest 119 1 239 94 wood
+room_14                         # fence, wall and lamp
+  use label
+  use pavement
+  fill 150 50 brick
+  fill 72 1 lightblue
+  rest 0 8 117 94 wood
+  rect 214 8 239 30 yellow
+  use bricks
+room_19                         # pub door SPARKLING ALES
+  use label
+  use pavement
+  fill 220 70 darkbrown
+  rect 38 25 160 50 red         # sign board
+  rest 0 1 239 94 cream
+room_20                         # back gate
+  use label
+  use pavement
+  rect 0 20 95 94 wood
+  rect 135 20 239 94 wood
+  rest 0 1 239 94 lightblue
+room_32                         # wall, fence and lamp
+  use label
+  use pavement
+  fill 60 40 brick
+  rest 0 1 117 94 wood
+  fill 120 1 lightblue
+  rect 214 8 239 30 yellow
+  rest 119 1 239 94 wood
+room_33                         # fence and wall
+  use label
+  use pavement
+  fill 180 40 brick
+  fill 72 1 lightblue
+  rest 0 8 119 94 wood
+  use bricks
+room_37                         # Andy's garden
+  use label
+  use pavement
+  fill 120 30 lightblue
+  rect 0 8 14 94 brick
+  rect 15 50 239 88 wood        # fence
+  rect 15 89 239 94 green       # grass
+  rest 0 1 239 94 lightblue
+room_42                         # police cell
+  use label
+  use floor
+  fill 120 40 lightgrey
+  rect 0 8 38 94 darkbrown      # bars
+  rect 147 8 197 46 navy        # window
+  rect 135 70 239 94 red        # bed
+  rest 0 1 239 94 grey
+room_44                         # Town Hall
+  use label
+  use pavement
+  fill 72 1 lightgrey
+  fill 96 24 darkbrown          # doorway
+  fill 8 24 lightblue           # windows
+  fill 184 24 lightblue
+  fill 155 28 cream             # columns and lintel
+  fill 83 28 cream
+  fill 73 17 cream
+  fill 75 21 cream
+  rest 0 1 239 94 grey
+room_47                         # UPHILL RD sign
+  use label
+  use pavement
+  fill 100 50 brick
+  rest 148 17 229 37 fixedwhite
+  use bricks
+room_49                         # Employment Exchange
+  use label
+  use pavement
+  fill 140 70 brick
+  fill 100 70 darkbrown         # door
+  rest 0 8 70 62 lightblue
+  rest 145 8 239 62 cream
+  use bricks
+room_56                         # shop door
+  use label
+  use pavement
+  fill 150 15 brick
+  fill 110 70 darkbrown
+  rest 0 30 80 82 lightblue
+  rest 155 30 239 82 lightblue
+  use bricks
+  rect 0 88 239 94 grey
+room_57                         # STAFF door
+  use label
+  use pavement
+  fill 40 40 brick
+  fill 50 70 darkbrown
+  rest 110 8 239 45 lightblue   # window grid
+  use bricks
+  rect 0 82 239 94 grey
+room_66                         # ANDYS AVE sign
+  use label
+  use pavement
+  fill 100 50 brick
+  rest 148 17 229 37 fixedwhite
+  use bricks
+room_71                         # post box
+  use label
+  use pavement
+  fill 150 50 brick
+  rect 8 48 40 94 red
+  use bricks
+room_74                         # ALFRED ST sign
+  use label
+  use pavement
+  fill 100 50 brick
+  rest 148 17 229 37 fixedwhite
+  use bricks
+room_77                         # betting office
+  use label
+  use pavement
+  fill 220 50 brick
+  fill 50 70 darkbrown
+  rest 75 8 190 55 cream
+  rest 0 1 239 94 wood
+room_78                         # Fred's Wing Nuts
+  use label
+  use pavement
+  fill 40 40 brick
+  fill 100 60 darkbrown
+  rest 70 8 170 26 yellow       # FREDS WING NUTS
+  use bricks
+room_18                         # pub 1 bar
+  use label
+  use floor
+  fill 150 40 cream
+  fill 33 45 skin
+  rect 0 62 136 94 wood         # counter
+  rect 90 48 125 61 green       # bottles
+  rest 150 20 200 60 lightblue  # picture
+room_21                         # Andy's front room
+  use label
+  use floor
+  fill 120 20 green
+  rect 55 15 105 45 lightblue   # picture
+  rect 40 60 125 87 red         # sofa
+  rect 165 35 185 52 yellow     # lamp shade
+  rest 0 8 239 87 green
+  rect 0 88 239 94 wood
+room_22                         # hall and stairs
+  use label
+  use floor
+  fill 40 40 cream
+  rest 0 1 239 94 wood
+room_26                         # police station desk
+  use label
+  use floor
+  fill 72 1 lightgrey
+  fill 155 16 darkbrown         # cell behind the bars
+  fill 44 48 skin
+  fill 49 45 skin
+  fill 93 13 navy               # window
+  rest 0 1 239 94 wood
+room_29                         # unused bar room (TV)
+  use label
+  use floor
+  fill 60 30 cream
+  rect 0 60 120 94 wood
+  rect 165 60 225 94 red
+  rest 0 1 239 94 cream
+room_30                         # court room
+  use label
+  use floor
+  fill 60 30 cream
+  rect 0 65 60 94 wood
+  rect 186 45 239 94 wood
+  rect 200 20 230 50 skin       # judge
+room_34                         # pub 1 pool room
+  use label
+  use floor
+  fill 118 1 cream
+  fill 72 1 cream
+  fill 39 83 cream
+  fill 45 23 yellow             # lamp shade
+  fill 32 73 green              # table
+  fill 25 65 green
+  fill 32 69 green
+  rest 195 55 239 94 wood       # bar
+  rest 30 76 140 94 cream
+room_38                         # Andy's kitchen
+  use label
+  use floor
+  fill 100 20 cream
+  rect 95 50 225 94 wood        # cupboards
+  rect 100 20 185 55 lightblue  # window
+  fill 55 60 darkbrown          # door way
+  rest 0 1 239 94 cream
+room_45                         # Town Hall desk
+  use label
+  use floor
+  fill 60 30 cream
+  rect 0 65 190 94 wood
+  rect 60 40 80 64 skin
+  rect 155 15 195 52 navy
+room_50                         # Employment Exchange desk
+  use label
+  use floor
+  fill 120 30 lightgrey
+  rect 20 10 60 50 lightblue
+  rect 80 65 239 94 wood
+  rect 150 50 175 64 skin
+  rest 0 1 239 94 lightgrey
+room_53                         # pub 2 lounge
+  use label
+  use floor
+  fill 72 1 cream
+  rect 55 62 239 94 wood
+  rect 75 40 120 61 green
+  rest 0 1 239 94 cream
+room_54                         # pub 2 bar
+  use label
+  use floor
+  fill 72 1 cream
+  fill 33 45 skin
+  rect 0 62 120 94 wood
+  rect 60 40 120 61 green
+  rect 165 60 225 94 red
+  rest 0 1 239 94 wood
+room_55                         # newsagent
+  use label
+  use floor
+  fill 72 1 cream
+  fill 0 72 wood
+  fill 0 65 wood
+  fill 0 69 wood
+  fill 157 37 wood
+  rest 160 37 215 94 red        # newspapers on the shelves
+  fill 101 13 wood              # clock
+  fill 105 25 fixedwhite
+  rect 0 55 50 64 lightgrey     # papers on the counter
+  rest 0 1 239 94 cream
+room_61                         # betting office inside
+  use label
+  use floor
+  fill 160 30 green
+  rect 0 62 145 94 wood         # counter
+  rest 0 1 135 30 wood          # screen of planks
+  rest 0 1 239 94 cream
+room_62                         # Fred's office
+  use label
+  use floor
+  fill 72 1 cream
+  fill 77 72 wood
+  fill 77 88 wood
+  fill 73 65 wood
+  fill 75 69 wood
+  fill 74 86 wood
+  fill 16 16 lightblue
+  fill 43 29 lightblue
+  fill 31 25 lightblue
+  fill 47 25 lightblue
+  fill 5 13 wood
+  fill 108 48 skin
+  fill 110 45 skin
+  rest 0 1 239 94 wood

@@ -1,0 +1,23 @@
+# Colours of the frame and status panel (tools/colour_art.py, HUD palette:
+# black, paper, blue, red, magenta, green, beer, yellow, icon*, skin, grey,
+# fixedwhite). Coordinates are Spectrum screen pixels (256x192); the panel
+# is y 104-191. The digits and the day name are printed by the game.
+
+screen
+  # labels in red, the numbers stay black
+  ink 176 112 223 119 red        # KISSES
+  ink 0 128 39 135 red           # TIME
+  ink 88 128 167 135 red         # ALCOMETER
+  ink 208 128 255 135 red        # MONEY
+  ink 80 152 127 159 red         # SCORE
+  # alcometer: grey tube, the bulb and the liquid in beer colour
+  swap 64 128 199 146 beer grey
+  rest 50 134 63 146 beer
+  # Andy: flat cap in grey check (the face keeps the paper colour)
+  small 0 152 24 176 8 grey
+  # Flo: face, red checked blouse
+  fill 235 156 skin
+  small 212 174 255 191 8 red
+  # icons: white speech bubble, yellow warning sign
+  fill 102 166 fixedwhite
+  fill 189 168 yellow

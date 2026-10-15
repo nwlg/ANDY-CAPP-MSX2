@@ -1,0 +1,112 @@
+{
+  "cover": "docs/manual/art/cover.png",
+  "cover_shot": "docs/manual/art/cover-shot.png",
+  "title": "docs/manual/art/title.png",
+  "montage": [
+    "docs/manual/art/street.png",
+    "docs/manual/art/pub2.png",
+    "docs/manual/art/night2.png",
+    "docs/manual/art/home.png",
+    "docs/manual/art/menu.png",
+    "docs/manual/art/message.png"
+  ],
+  "huds": [
+    {
+      "name": "hud",
+      "src": "docs/manual/art/street.png",
+      "box": [
+        0,
+        114,
+        256,
+        202
+      ],
+      "labels": [
+        [
+          1,
+          36,
+          124
+        ],
+        [
+          2,
+          10,
+          148
+        ],
+        [
+          3,
+          140,
+          151
+        ],
+        [
+          4,
+          205,
+          124
+        ],
+        [
+          5,
+          240,
+          148
+        ],
+        [
+          6,
+          105,
+          166
+        ],
+        [
+          7,
+          14,
+          182,
+          "b"
+        ],
+        [
+          8,
+          66,
+          186,
+          "b"
+        ],
+        [
+          9,
+          106,
+          186,
+          "b"
+        ],
+        [
+          10,
+          148,
+          186,
+          "b"
+        ],
+        [
+          11,
+          192,
+          186,
+          "b"
+        ],
+        [
+          12,
+          236,
+          182,
+          "b"
+        ]
+      ]
+    }
+  ],
+  "label": {
+    "lines": [
+      "MSX2 · 64 KB RAM",
+      "ASCII16 MegaROM · 512 KB"
+    ],
+    "credit": "MIRRORSOFT 1987 · MSX2 PORT: DIHALT STUDIO 2026",
+    "fit": true,
+    "badge": "MSX2",
+    "accent": [
+      220,
+      40,
+      30
+    ],
+    "bg": [
+      20,
+      16,
+      12
+    ]
+  }
+}
